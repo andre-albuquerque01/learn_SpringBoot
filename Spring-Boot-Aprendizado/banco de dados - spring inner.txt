@@ -1,0 +1,85 @@
+create database  springjoin;
+
+use springjoin;
+drop database empresa;
+
+create table departamento(
+id int(10) primary key auto_increment,
+nome varchar(40) not null,
+decricao varchar(150)
+)ENGINE = innodb;
+
+create table empregado(
+id int(10) primary key auto_increment,
+nome varchar(40) not null,
+email varchar(150) not null,
+endereco varchar(250) not null,
+id_depto int
+)ENGINE = innodb;
+
+ALTER TABLE empregado ADD CONSTRAINT id_depto FOREIGN KEY ( id_depto ) REFERENCES departamento ( id ) ;
+
+
+
+INSERT INTO `departamento`
+(`nome`,
+`decricao`)
+VALUES
+("jogador", "atacante"), ("jogador", "goleiro"), ("jogador", "lateral"), ("jogador", "ti"), ("jogador", "armador");
+
+select * from departamento;
+
+
+INSERT INTO `empregado`
+(`nome`,
+`email`,
+`endereco`,
+`id_depto`)
+VALUES
+('di bruni','dibruni@gmail.com','europa',1), ("lucas", "jogador@gmail.com",'europa',2), ("neymar", "jogador@gmail.com",'europa',3), 
+("diego", "jogador@gmail.com",'europa',4);
+
+select * from empregado;
+
+INSERT INTO `empregado`
+(`nome`,
+`email`,
+`endereco`)
+VALUES
+("RafaelTI", "tudoIncluso@gmail.com",'europa');
+
+/*
+O que é inner join? Permitem combinar dados de duas ou mais tabelas em uma única consulta.
+INNER JOIN: retorna linhas quando há uma correspondência em ambas as tabelas.
+LEFT JOIN: retorna todas as linhas da tabela da esquerda, mesmo que não haja correspondências na tabela da direita.
+RIGHT JOIN: retorna todas as linhas da tabela da direita, mesmo que não haja correspondências na tabela da esquerda.
+CROSS JOIN: retorna o produto cartesiano de ambas as tabelas, ou seja, todas as combinações possíveis de linhas.
+
+Como funciona?
+*/
+/*Inner join*/
+SELECT d.nome, e.nome, e.email, e.endereco, d.id
+FROM empregado e
+INNER JOIN departamento d
+ON e.id = d.id;
+
+/*left join*/
+SELECT d.nome, e.nome, e.email, e.endereco, d.id
+FROM empregado e
+RIGHT JOIN departamento d
+ON e.id = d.id;
+
+/*right join*/
+SELECT d.nome, e.nome, e.email, e.endereco, d.id
+FROM empregado e
+RIGHT JOIN departamento d
+ON e.id = d.id;
+
+/*cross join*/
+SELECT d.nome, e.nome, e.email, e.endereco, d.id
+FROM empregado e
+CROSS JOIN departamento d;
+
+select * from departamento;
+select * from empregado;
+

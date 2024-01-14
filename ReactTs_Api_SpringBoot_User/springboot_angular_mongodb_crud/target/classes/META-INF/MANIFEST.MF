@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: Home
+Build-Jdk: 17.0.9
+Implementation-Title: springboot_angular_mongodb_crud
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.example
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/springboot_angular_mongodb_crud
+Created-By: Maven Integration for Eclipse
+
